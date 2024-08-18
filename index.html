@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha do Gremio</title>
+</head>
+<body>
+    <header>ESCOLHA UM CANDIDATO</header>
+    <main id="mainContent">
+        <div class="div1" id="div1">CHAPA 1</div>
+        <div class="div2" id="div2">CHAPA 2</div>
+    </main>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>Obrigado por votar</p>
+            <input class="caixa" type="password" id="unlockPassword" placeholder="DIGITE A SENHA PARA DESBLOQUEAR" style="display: none;">
+            <button class="botao" id="unlockButton" style="display: none;">DESBLOQUEAR</button>
+            <button class="botao" id="endVotingButton">ENCERRAR VOTAÇÃO E GERAR PDF</button>
+            <input class="caixa" type="password" id="endVotingPassword" placeholder="DIGITE A SENHA PARA ENCERRAR A VOTAÇÃO" style="display: none;">
+            <button class="botao" id="confirmEndVotingButton" style="display: none;">CONFIRMAR ENCERRAMENTO</button>
+        </div>
+    </div>
+
+    <script src="js/jspdf.umd.min.js"></script> <!-- Atualize o caminho conforme necessário -->
+    <script src="script.js"></script>
+</body>
+</html>
