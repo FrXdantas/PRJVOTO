@@ -4,22 +4,34 @@
     <link href="style.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escolha do Gremio</title>
+    <title>URNA ELETRONICA</title>
 </head>
 <body>
-    <header>ESCOLHA UM CANDIDATO</header>
+    <header>URNA ELETRONICA<br>ESCOLHA UM CANDIDATO</header>
     <main id="mainContent">
-        <div class="div1" id="div1">CHAPA 1</div>
-        <div class="div2" id="div2">CHAPA 2</div>
+        <div class="div1" id="div1">
+            <img src="./img/grm1.png" width="30%"><br>CHAPA 1
+        </div>
+        <div class="div2" id="div2"><img src="./img/grm2.png" width="45%"><br>CHAPA 2</div>
     </main>
 
+    <!-- Modal de Confirmação -->
+    <div id="confirmChoiceModal" class="modal">
+        <div class="modal-content">
+            <p>CONFIRMA O VOTO EM <span id="chosenCandidate"></span>?</p>
+            <button class="botao2" id="confirmVote">SIM</button>
+            <button class="botao2" id="cancelVote">NÃO</button>
+        </div>
+    </div>
+
+    <!-- Modal Principal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <p>Obrigado por votar</p>
-            <input class="caixa" type="password" id="unlockPassword" placeholder="DIGITE A SENHA PARA DESBLOQUEAR" style="display: none;">
+            <input  class="caixa"  type="password" id="unlockPassword" placeholder="DIGITE A SENHA">
             <button class="botao" id="unlockButton" style="display: none;">DESBLOQUEAR</button>
-            <button class="botao" id="endVotingButton">ENCERRAR VOTAÇÃO E GERAR PDF</button>
-            <input class="caixa" type="password" id="endVotingPassword" placeholder="DIGITE A SENHA PARA ENCERRAR A VOTAÇÃO" style="display: none;">
+            <button class="botao" id="endVotingButton">ENCERRAR VOTAÇÃO</button>
+            <input  class="caixa" type="password" id="endVotingPassword" placeholder="DIGITE A SENHA">
             <button class="botao" id="confirmEndVotingButton" style="display: none;">CONFIRMAR ENCERRAMENTO</button>
         </div>
     </div>

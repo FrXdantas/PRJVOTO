@@ -1,101 +1,130 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Contadores de cliques
-    let count1 = 0;
-    let count2 = 0;
-    let isLocked = false; // Variável para rastrear o estado de bloqueio
+    let contagem1 = 0;
+    let contagem2 = 0;
+    let estaBloqueado = false;
+    let divSelecionada = null;
+    const dataHoraAbertura = new Date().toLocaleString();
+    const audioConfirma = document.getElementById("audioConfirma")
 
-    // Variável para armazenar a data e hora fixa
-    const dateTimeOpened = new Date().toLocaleString();
-
-    // Seleciona os elementos
     const div1 = document.getElementById('div1');
     const div2 = document.getElementById('div2');
-    const modal = document.getElementById('myModal');
-    const unlockPasswordInput = document.getElementById('unlockPassword');
-    const unlockButton = document.getElementById('unlockButton');
-    const endVotingPasswordInput = document.getElementById('endVotingPassword');
-    const confirmEndVotingButton = document.getElementById('confirmEndVotingButton');
-    const endVotingButton = document.getElementById('endVotingButton');
-    const mainContent = document.getElementById('mainContent');
+    const modalPrincipal = document.getElementById('myModal');
+    const inputSenhaDesbloqueio = document.getElementById('unlockPassword');
+    const botaoDesbloquear = document.getElementById('unlockButton');
+    const inputSenhaEncerrar = document.getElementById('endVotingPassword');
+    const botaoConfirmarEncerramento = document.getElementById('confirmEndVotingButton');
+    const botaoEncerrarVotacao = document.getElementById('endVotingButton');
+    const conteudoPrincipal = document.getElementById('mainContent');
 
-    // Senhas corretas
-    const unlockPassword = 'votar'; // Senha para desbloquear a tela
-    const endVotingPassword = 'encerrar'; // Senha para encerrar a votação e gerar o PDF
+    const modalConfirmacaoEscolha = document.getElementById('confirmChoiceModal');
+    const candidatoEscolhido = document.getElementById('chosenCandidate');
+    const botaoConfirmarVoto = document.getElementById('confirmVote');
+    const botaoCancelarVoto = document.getElementById('cancelVote');
 
-    // Função para lidar com o clique
-    function handleClick(event) {
-        if (isLocked) {
+    const senhaDesbloqueio = 'voto';
+    const senhaEncerrar = 'encerrar';
+
+    function lidarClique(event) {
+        if (estaBloqueado) {
             alert('Tela bloqueada! Digite a senha para desbloquear.');
             return;
         }
 
-        if (event.target === div1) {
-            count1++;
-            console.log(`Div 1 clicada ${count1} vezes`);
-        } else if (event.target === div2) {
-            count2++;
-            console.log(`Div 2 clicada ${count2} vezes`);
-        }
-        // Mostra a modal e limpa o campo de senha de desbloqueio
-        modal.style.display = 'block';
-        unlockPasswordInput.style.display = 'block'; // Mostra o campo de senha de desbloqueio
-        unlockButton.style.display = 'block'; // Mostra o botão de desbloqueio
-        endVotingPasswordInput.style.display = 'none'; // Esconde o campo de senha para encerrar votação
-        confirmEndVotingButton.style.display = 'none'; // Esconde o botão de confirmação para encerrar votação
-        mainContent.classList.add('locked'); // Bloqueia o conteúdo
-        isLocked = true; // Define a tela como bloqueada
-        unlockPasswordInput.value = '';
+        divSelecionada = event.target;
+        const nomeCandidato = divSelecionada.textContent.trim();
+        candidatoEscolhido.textContent = nomeCandidato;
+
+        modalConfirmacaoEscolha.style.display = 'block';
+        conteudoPrincipal.classList.add('locked');
+        estaBloqueado = true;
     }
 
-    // Função para desbloquear a tela
-    function unlockScreen() {
-        if (unlockPasswordInput.value === unlockPassword) {
-            isLocked = false; // Desbloqueia a tela
-            mainContent.classList.remove('locked'); // Remove a classe de bloqueio
-            modal.style.display = 'none'; // Fecha a modal
+    function confirmarVoto() {
+        if (divSelecionada) {
+            if (divSelecionada === div1) {
+                contagem1++;
+                console.log(`Div 1 clicada ${contagem1} vezes`);
+            } else if (divSelecionada === div2) {
+                contagem2++;
+                console.log(`Div 2 clicada ${contagem2} vezes`);
+            }
+            modalConfirmacaoEscolha.style.display = 'none';
+            modalPrincipal.style.display = 'block';
+            inputSenhaDesbloqueio.style.display = 'block';
+            botaoDesbloquear.style.display = 'block';
+            inputSenhaEncerrar.style.display = 'none';
+            botaoConfirmarEncerramento.style.display = 'none';
+            inputSenhaDesbloqueio.value = '';
+            audioConfirma.play();
+        }
+        conteudoPrincipal.classList.remove('locked');
+        estaBloqueado = false;
+    }
+
+    function cancelarVoto() {
+        modalConfirmacaoEscolha.style.display = 'none';
+        conteudoPrincipal.classList.remove('locked');
+        estaBloqueado = false;
+    }
+
+    function desbloquearTela() {
+        if (inputSenhaDesbloqueio.value === senhaDesbloqueio) {
+            estaBloqueado = false;
+            conteudoPrincipal.classList.remove('locked');
+            modalPrincipal.style.display = 'none';
         } else {
             alert('Senha para desbloquear incorreta!');
-            unlockPasswordInput.value = ''; // Limpa o campo de senha
+            inputSenhaDesbloqueio.value = '';
         }
     }
 
-    // Função para encerrar a votação e gerar o PDF
-    function endVoting() {
-        endVotingPasswordInput.style.display = 'block'; // Mostra o campo de senha para encerrar votação
-        confirmEndVotingButton.style.display = 'block'; // Mostra o botão para confirmar encerramento
+    function encerrarVotacao() {
+        inputSenhaEncerrar.style.display = 'block';
+        botaoConfirmarEncerramento.style.display = 'block';
     }
 
-    // Função para confirmar o encerramento da votação
-    function confirmEndVoting() {
-        if (endVotingPasswordInput.value === endVotingPassword) {
+    function confirmarEncerramentoVotacao() {
+        if (inputSenhaEncerrar.value === senhaEncerrar) {
+            const dataFechamento = new Date().toLocaleString();
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            doc.text('Relatório de votação ', 10, 10);
-            doc.text('=========================================== ', 10, 20);
-            doc.text(`Data e Hora de Abertura: ${dateTimeOpened}`, 10, 30);
-            doc.text(`CHAPA 1: ${count1} Votos`, 10, 50);
-            doc.text(`CHAPA 2: ${count2} Votos`, 10, 60);
-            doc.text('=========================================== ', 10, 80);
-            doc.text(`Total de votos: ${count1+count2}`, 10, 100);
+            doc.text('Relatório de votação ', 10, 20);
+            doc.text('___________________________________________', 10, 22);
+            doc.text(`Abertura da urna........: ${dataHoraAbertura}`, 10, 40);
+            doc.text(`Fechamento da urna..: ${dataFechamento}`, 10, 50);
+            doc.text('Distribuição dos votos ', 10, 80);
+            doc.text('___________________________________________', 10, 85);
+            doc.text(`Total de votos CHAPA 01 : ${contagem1} `, 10, 100);
+            doc.text(`Total de votos CHAPA 02 : ${contagem2} `, 10, 110);
+            doc.text('___________________________________________', 10, 120);
+            doc.text(`Votaram ${contagem1+contagem2} alunos`, 10, 135);
+            doc.text('_______________________ ', 50, 160);
+            doc.text('testemunha',70,168);
+            doc.text('_______________________ ', 50, 180);
+            doc.text('testemunha',70,188);
+            doc.text('_______________________ ', 50, 200);
+            doc.text('responsável',70,208);
+            doc.text('Sistema programado por: 3 ano Técnico em Informática - CETAM',10,280);
+
             doc.save('ConferenciadeVotos.pdf');
-            modal.style.display = 'none'; // Fecha a modal
-            endVotingPasswordInput.value = ''; // Limpa o campo de senha
-            mainContent.classList.remove('locked'); // Remove o bloqueio do conteúdo
-            isLocked = false; // Define a tela como desbloqueada
+            modalPrincipal.style.display = 'none';
+            inputSenhaEncerrar.value = '';
+            conteudoPrincipal.classList.remove('locked');
+            estaBloqueado = false;
         } else {
             alert('Senha para encerrar a votação incorreta!');
-            endVotingPasswordInput.value = ''; // Limpa o campo de senha
+            inputSenhaEncerrar.value = '';
         }
     }
 
-    // Adiciona os ouvintes de evento
-    div1.addEventListener('click', handleClick);
-    div2.addEventListener('click', handleClick);
-    unlockButton.addEventListener('click', unlockScreen);
-    endVotingButton.addEventListener('click', endVoting);
-    confirmEndVotingButton.addEventListener('click', confirmEndVoting);
+    div1.addEventListener('click', lidarClique);
+    div2.addEventListener('click', lidarClique);
+    botaoConfirmarVoto.addEventListener('click', confirmarVoto);
+    botaoCancelarVoto.addEventListener('click', cancelarVoto);
+    botaoDesbloquear.addEventListener('click', desbloquearTela);
+    botaoEncerrarVotacao.addEventListener('click', encerrarVotacao);
+    botaoConfirmarEncerramento.addEventListener('click', confirmarEncerramentoVotacao);
 
-    // Adiciona os ouvintes de evento para o mouse
     div1.addEventListener('mouseover', (event) => event.target.classList.add('hovered'));
     div1.addEventListener('mouseout', (event) => event.target.classList.remove('hovered'));
     div2.addEventListener('mouseover', (event) => event.target.classList.add('hovered'));

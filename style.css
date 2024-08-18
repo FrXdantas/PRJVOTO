@@ -1,9 +1,10 @@
 header{
     color: white;
-    background-color: green;
+    background-color:rgb(50, 79, 136);;
     padding: 2%;
-    margin-top: 20px;
     margin:10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     border: 4px solid;
     border-color: black;
     border-radius: 10px;
@@ -15,15 +16,16 @@ header{
 
 
 main{
-    
-    padding:auto;
+    margin: 10px;
+    margin-top: 20px;
+    padding:20px;
     align-items:stretch;
     height: 700px;
     display: flex;
     border: 5px solid;
     border-color: black;
     border-radius: 10px;
-    background-color:green;
+    background-color:rgb(46, 76, 136);;
     margin: 10px;
 }
 
@@ -39,7 +41,7 @@ main{
     height: 85%;
     margin: 70px;
     margin-top: 30px;
-    background-color:red;
+    background-color:rgb(115, 115, 224);;
 
 }
 
@@ -55,7 +57,7 @@ main{
     height: 85%;
     margin: 90px;
     margin-top:30px;
-    background-color: blue;
+    background-color: rgb(115, 115, 224);
 
 }
 
@@ -76,13 +78,16 @@ main{
     background-color: rgba(0,0,0,0.4);
 }
 .modal-content {
-    padding: 20px;
-    background-color: #fefefe;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 20px 20px 20px;
+    background-color: wheat;
     margin: 10% auto;
-    border: 20px solid #171515;
+    border: 10px solid #171515;
     width: 80%;
     max-width: 800px;
-    height: 30%;
+    height: 40%;
     max-height: 800px;
 }
 .close {
@@ -105,21 +110,40 @@ main{
 
 P{
     margin-top: 4px;
+    text-align: center;
     font-size: 40px;
     font-style: normal;
     padding: 4px;;
 }
 
 .botao{
+    
     margin-top: 10px;
     font-size: 25px;
     padding: auto;
+    width: 100%;
+    height: 50px;
+
+}
+
+.botao2{
+    margin-top: 10px;
+    font-size: 25px;
+    padding: 2px;
+    width: 100%;
+    height: 50px;
 
 }
 .caixa{
+    text-align: center;
     margin-top: 10px;
     padding: auto;
     border: 2px solid color black;
     font-size: 25px;
+    width: 100%;
+    height: 50px;
 
+}
+body{
+    background-color: rgb(98, 131, 197);;
 }
