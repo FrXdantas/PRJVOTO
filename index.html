@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <link href="style.css" rel="stylesheet">
     <meta charset="UTF-8">
@@ -10,32 +10,38 @@
     <header>URNA ELETRONICA<br>ESCOLHA UM CANDIDATO</header>
     <main id="mainContent">
         <div class="div1" id="div1">
-            <img src="./img/grm1.png" width="30%"><br>CHAPA 1
+            <img src="./img/grm1.png" width="31%"><br>CHAPA 1
         </div>
-        <div class="div2" id="div2"><img src="./img/grm2.png" width="45%"><br>CHAPA 2</div>
+        <div class="div2" id="div2"><img src="./img/grm2.png" width="50%"><br>CHAPA 2</div>
     </main>
 
     <!-- Modal de Confirmação -->
     <div id="confirmChoiceModal" class="modal">
         <div class="modal-content">
             <p>CONFIRMA O VOTO EM <span id="chosenCandidate"></span>?</p>
+            <img class="imag" src="./img/confirma.png" rel ="confirma">
             <button class="botao2" id="confirmVote">SIM</button>
-            <button class="botao2" id="cancelVote">NÃO</button>
+            <button class="botao2" id="cancelVote">NÃO</button><br>
+            
         </div>
     </div>
 
     <!-- Modal Principal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <p>Obrigado por votar</p>
+            <p>VOTO CONFIRMADO</p>
+            <img class="imag" src="./img/senha.png" rel="senha">
             <input  class="caixa"  type="password" id="unlockPassword" placeholder="DIGITE A SENHA">
             <button class="botao" id="unlockButton" style="display: none;">DESBLOQUEAR</button>
             <button class="botao" id="endVotingButton">ENCERRAR VOTAÇÃO</button>
             <input  class="caixa" type="password" id="endVotingPassword" placeholder="DIGITE A SENHA">
             <button class="botao" id="confirmEndVotingButton" style="display: none;">CONFIRMAR ENCERRAMENTO</button>
+        
+        
         </div>
     </div>
 
+    <audio id="audioConfirma" src="./sound/confirma.mp3"></audio>
     <script src="js/jspdf.umd.min.js"></script> <!-- Atualize o caminho conforme necessário -->
     <script src="script.js"></script>
 </body>

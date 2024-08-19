@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             doc.text('testemunha',70,188);
             doc.text('_______________________ ', 50, 200);
             doc.text('responsável',70,208);
-            doc.text('Sistema programado por: 3 ano Técnico em Informática - CETAM',10,280);
+            doc.text('Sistema programado por: 3o ano Técnico em Informática - CETAM',10,280);
 
             doc.save('ConferenciadeVotos.pdf');
             modalPrincipal.style.display = 'none';

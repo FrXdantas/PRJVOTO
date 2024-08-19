@@ -1,6 +1,6 @@
 header{
     color: white;
-    background-color:rgb(50, 79, 136);;
+    background-color:rgb(98, 147, 244);;
     padding: 2%;
     margin:10px;
     margin-top: 30px;
@@ -25,7 +25,7 @@ main{
     border: 5px solid;
     border-color: black;
     border-radius: 10px;
-    background-color:rgb(46, 76, 136);;
+    background-color:rgb(98, 147, 244);;
     margin: 10px;
 }
 
@@ -41,7 +41,7 @@ main{
     height: 85%;
     margin: 70px;
     margin-top: 30px;
-    background-color:rgb(115, 115, 224);;
+    background-color:rgb(72, 72, 183);;
 
 }
 
@@ -57,7 +57,7 @@ main{
     height: 85%;
     margin: 90px;
     margin-top:30px;
-    background-color: rgb(115, 115, 224);
+    background-color:rgb(72, 72, 183);
 
 }
 
@@ -87,7 +87,7 @@ main{
     border: 10px solid #171515;
     width: 80%;
     max-width: 800px;
-    height: 40%;
+    height: 52%;
     max-height: 800px;
 }
 .close {
@@ -145,5 +145,18 @@ P{
 
 }
 body{
-    background-color: rgb(98, 131, 197);;
+    background-color: white;
+    
+    }
+
+.imag{
+
+    margin-top: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
